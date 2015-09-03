@@ -1,14 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
+using Microsoft.AspNet.Builder;
 using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNet.Builder;
 using Microsoft.AspNet.Hosting;
-using Microsoft.AspNet.Http;
-using Microsoft.AspNet.Routing;
+using Microsoft.AspNet.Mvc;
+using Microsoft.Dnx.Runtime;
+using Microsoft.Framework.Configuration;
 using Microsoft.Framework.DependencyInjection;
+using Newtonsoft.Json.Serialization;
+using AspNet5_Benchmark;
 
-namespace AspNet5_Benchmark
+namespace HostKWebOnLinux
 {
     public class Startup
     {
@@ -31,12 +32,12 @@ namespace AspNet5_Benchmark
         {
             // Configure the HTTP request pipeline.
             //app.UseStaticFiles();
-            
-            app.UseJson();
+            app.UseMvc();
+            app.UseJson();            
             app.UsePlainText();
 
             // Add MVC to the request pipeline.
-            app.UseMvc();
+            
             // Add the following route for porting Web API 2 controllers.
             // routes.MapWebApiRoute("DefaultApi", "api/{controller}/{id?}");
         }
